@@ -1,6 +1,5 @@
 package com.example.musicwiki.network.model
 
-import android.util.EventLogTags
 import com.google.gson.annotations.SerializedName
 
 data class Genre(

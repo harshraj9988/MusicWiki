@@ -12,7 +12,31 @@
         tools:context=".presentation.ui.GenreListFragment">
 
         <TextView
-            android:id="@+id/test"
+            android:id="@+id/genre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hello" />
+
+        <TextView
+            android:id="@+id/genreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hello" />
+
+        <TextView
+            android:id="@+id/album"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hello" />
+
+        <TextView
+            android:id="@+id/artist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hello" />
+
+        <TextView
+            android:id="@+id/track"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Hello" />

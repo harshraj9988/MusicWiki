@@ -21,13 +21,13 @@ class GenreListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_list, null, false)
-        return inflater.inflate(R.layout.fragment_genre_list, container, false)
-    }
+    ): View {
+        binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_list, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+        viewModel.genreList.observe(viewLifecycleOwner) {
+            it?.let { binding.genre.text = it[0].toString() }
+        }
+        return binding.root
     }
 }
