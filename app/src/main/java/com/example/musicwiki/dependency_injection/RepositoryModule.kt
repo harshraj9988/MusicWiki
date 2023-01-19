@@ -1,4 +1,4 @@
-package com.example.musicwiki.di
+package com.example.musicwiki.dependency_injection
 
 import com.example.musicwiki.network.LastFMService
 import com.example.musicwiki.repository.LastFMRepository

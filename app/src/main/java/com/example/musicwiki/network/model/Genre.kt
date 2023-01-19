@@ -1,5 +1,6 @@
 package com.example.musicwiki.network.model
 
+import com.example.musicwiki.network.model.utils.Description
 import com.google.gson.annotations.SerializedName
 
 data class Genre(
@@ -20,11 +21,4 @@ data class Genre(
     var description: Description? = null
 )
 
-data class Description(
 
-    @SerializedName("summary")
-    var summary: String? = null,
-
-    @SerializedName("content")
-    var content: String? = null
-)

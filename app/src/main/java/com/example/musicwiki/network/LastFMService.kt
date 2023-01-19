@@ -53,4 +53,49 @@ interface LastFMService {
         @Query("format") format: String = "json"
     ): TrackListResponse
 
+    @GET(END_POINT)
+    suspend fun getArtistInfoResponse(
+        @Query("tag") artist: String,
+        @Header("user-agent") userAgent: String = USER_AGENT,
+        @Query("method") method: String = "artist.getinfo",
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("format") format: String = "json"
+    ): ArtistInfoResponse
+
+    @GET(END_POINT)
+    suspend fun getArtistTopTrackListResponse(
+        @Query("artist") genre: String,
+        @Header("user-agent") userAgent: String = USER_AGENT,
+        @Query("method") method: String = "artist.gettoptracks",
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("format") format: String = "json"
+    ): TrackListResponse
+
+    @GET(END_POINT)
+    suspend fun getArtistTopGenreListResponse(
+        @Query("artist") artist: String,
+        @Header("user-agent") userAgent: String = USER_AGENT,
+        @Query("method") method: String = "artist.gettoptags",
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("format") format: String = "json"
+    ): GenreListResponse
+
+    @GET(END_POINT)
+    suspend fun getArtistTopAlbumListResponse(
+        @Query("artist") artist: String,
+        @Header("user-agent") userAgent: String = USER_AGENT,
+        @Query("method") method: String = "artist.gettopalbums",
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("format") format: String = "json"
+    ): AlbumListResponse
+
+    @GET(END_POINT)
+    suspend fun getAlbumInfoResponse(
+        @Query("album") album: String,
+        @Query("artist") artist: String,
+        @Header("user-agent") userAgent: String = USER_AGENT,
+        @Query("method") method: String = "album.getinfo",
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("format") format: String = "json"
+    ): AlbumInfoResponse
 }

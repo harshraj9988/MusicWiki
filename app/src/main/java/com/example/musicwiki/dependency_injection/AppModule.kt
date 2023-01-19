@@ -1,4 +1,4 @@
-package com.example.musicwiki.di
+package com.example.musicwiki.dependency_injection
 
 import android.content.Context
 import com.example.musicwiki.presentation.BaseApplication

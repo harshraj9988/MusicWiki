@@ -1,9 +1,6 @@
 package com.example.musicwiki.repository
 
-import com.example.musicwiki.network.model.Album
-import com.example.musicwiki.network.model.Artist
-import com.example.musicwiki.network.model.Genre
-import com.example.musicwiki.network.model.Track
+import com.example.musicwiki.network.model.*
 
 interface LastFMRepository {
 
@@ -16,5 +13,15 @@ interface LastFMRepository {
     suspend fun getAlbumList(query: String): List<Album>?
 
     suspend fun getTrackList(query: String): List<Track>?
+
+    suspend fun getArtistInfo(artist: String): Artist?
+
+    suspend fun getArtistTopGenres(artist: String): List<Genre>?
+
+    suspend fun getArtistTopTracks(artist: String): List<Track>?
+
+    suspend fun getArtistTopAlbums(artist: String): List<Album>?
+
+    suspend fun getAlbumInfo(album: String, artist: String): AlbumInfo?
 
 }

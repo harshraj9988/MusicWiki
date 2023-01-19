@@ -19,5 +19,8 @@ data class Album(
     var images: List<Image>? = null,
 
     @SerializedName("@attr")
-    var attribute: Attribute? = null
+    var attribute: Attribute? = null,
+
+    @SerializedName("playcount")
+    var playCount: Long? = null
 )
