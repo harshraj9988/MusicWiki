@@ -28,6 +28,23 @@ class GenreListFragment : Fragment() {
         viewModel.genreList.observe(viewLifecycleOwner) {
             it?.let { binding.genre.text = it[0].toString() }
         }
+
+        viewModel.genreInfo.observe(viewLifecycleOwner) {
+            it?.let { binding.genreInfo.text = it.toString() }
+        }
+
+        viewModel.albumList.observe(viewLifecycleOwner) {
+            it?.let { binding.album.text = it[0].toString() }
+        }
+
+        viewModel.artistList.observe(viewLifecycleOwner) {
+            it?.let { binding.artist.text = it[0].toString() }
+        }
+
+        viewModel.trackList.observe(viewLifecycleOwner) {
+            it?.let { binding.track.text = it[0].toString() }
+        }
+
         return binding.root
     }
 }

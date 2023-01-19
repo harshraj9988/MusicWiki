@@ -1,6 +1,5 @@
 package com.example.musicwiki.repository
 
-import android.util.Log
 import com.example.musicwiki.network.LastFMService
 import com.example.musicwiki.network.model.Album
 import com.example.musicwiki.network.model.Artist
@@ -16,7 +15,6 @@ class LastFMRepositoryImpl(
 ) : LastFMRepository {
     override suspend fun getGenreList(): List<Genre>? {
         val genreListResponse: GenreListResponse = lastFMService.getGenreListResponse()
-        Log.e("GenreListResponse", genreListResponse.errorMessage?:"Success" )
         return genreListResponse.topGenres?.genres
     }
 
