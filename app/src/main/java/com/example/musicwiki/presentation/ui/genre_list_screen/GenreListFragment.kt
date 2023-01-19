@@ -1,4 +1,4 @@
-package com.example.musicwiki.presentation.ui
+package com.example.musicwiki.presentation.ui.genre_list_screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.musicwiki.R
 import com.example.musicwiki.databinding.FragmentGenreListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,25 +27,15 @@ class GenreListFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_list, container, false)
 
-        viewModel.genreList.observe(viewLifecycleOwner) {
-            it?.let { binding.genre.text = it[0].toString() }
-        }
+        val list = viewModel.list
 
-        viewModel.genreInfo.observe(viewLifecycleOwner) {
-            it?.let { binding.genreInfo.text = it.toString() }
-        }
+        val adapter = GenreListAdapter()
+        adapter.submitList(viewModel.list)
 
-        viewModel.albumList.observe(viewLifecycleOwner) {
-            it?.let { binding.album.text = it[0].toString() }
-        }
+        binding.genreListRecyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        binding.genreListRecyclerView.setHasFixedSize(true)
+        binding.genreListRecyclerView.adapter = adapter
 
-        viewModel.artistList.observe(viewLifecycleOwner) {
-            it?.let { binding.artist.text = it[0].toString() }
-        }
-
-        viewModel.trackList.observe(viewLifecycleOwner) {
-            it?.let { binding.track.text = it[0].toString() }
-        }
 
         return binding.root
     }

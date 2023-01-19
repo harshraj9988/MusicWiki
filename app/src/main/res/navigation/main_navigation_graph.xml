@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/genreListFragment"
-        android:name="com.example.musicwiki.presentation.ui.GenreListFragment"
+        android:name="com.example.musicwiki.presentation.ui.genre_list_screen.GenreListFragment"
         android:label="GenreListFragment" />
 </navigation>
