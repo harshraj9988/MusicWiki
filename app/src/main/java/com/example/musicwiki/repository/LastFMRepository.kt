@@ -1,8 +1,8 @@
 package com.example.musicwiki.repository
 
-import com.example.musicwiki.network.model.GenreDto
+import com.example.musicwiki.network.model.Genre
 
 interface LastFMRepository {
 
-    suspend fun getGenreList(): List<GenreDto>?
+    suspend fun getGenreList(): List<Genre>?
 }

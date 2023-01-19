@@ -1,6 +1,6 @@
 package com.example.musicwiki.network.response
 
-import com.example.musicwiki.network.model.GenreDto
+import com.example.musicwiki.network.model.Genre
 import com.google.gson.annotations.SerializedName
 
 data class GenreListResponse(
@@ -22,7 +22,7 @@ data class TopGenres(
     var attributes: Attributes? = null,
 
     @SerializedName("tag")
-    var genres: List<GenreDto>? = null
+    var genres: List<Genre>? = null
 )
 
 data class Attributes(
