@@ -1,7 +1,7 @@
 package com.example.musicwiki.dependency_injection
 
 import com.example.musicwiki.network.LastFMService
-import com.example.musicwiki.utils.BASE_URL
+import com.example.musicwiki.network.utils.BASE_URL
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

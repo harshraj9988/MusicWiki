@@ -1,4 +1,4 @@
-package com.example.musicwiki.utils
+package com.example.musicwiki.network.utils
 
 
 const val BASE_URL = "http://ws.audioscrobbler.com/"

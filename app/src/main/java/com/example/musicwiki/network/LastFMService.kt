@@ -1,9 +1,9 @@
 package com.example.musicwiki.network
 
 import com.example.musicwiki.network.response.*
-import com.example.musicwiki.utils.API_KEY
-import com.example.musicwiki.utils.END_POINT
-import com.example.musicwiki.utils.USER_AGENT
+import com.example.musicwiki.network.utils.API_KEY
+import com.example.musicwiki.network.utils.END_POINT
+import com.example.musicwiki.network.utils.USER_AGENT
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
