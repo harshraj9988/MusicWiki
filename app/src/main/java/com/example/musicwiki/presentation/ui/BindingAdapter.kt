@@ -36,7 +36,7 @@ fun TextView.setTitle(track: Track?) {
 @BindingAdapter("album_cover_image")
 fun ImageView.loadImage(album: Album?) {
     Glide.with(this.context)
-        .load(album?.images?.get(1))
+        .load(album?.images?.get(2)?.url)
         .error(DEFAULT_IMAGE)
         .placeholder(DEFAULT_IMAGE)
         .fallback(DEFAULT_IMAGE)
@@ -46,7 +46,7 @@ fun ImageView.loadImage(album: Album?) {
 @BindingAdapter("artist_cover_image")
 fun ImageView.loadImage(artist: Artist?) {
     Glide.with(this.context)
-        .load(artist?.images?.get(1))
+        .load(artist?.images?.get(2)?.url)
         .error(DEFAULT_IMAGE)
         .placeholder(DEFAULT_IMAGE)
         .fallback(DEFAULT_IMAGE)
@@ -56,7 +56,7 @@ fun ImageView.loadImage(artist: Artist?) {
 @BindingAdapter("track_cover_image")
 fun ImageView.loadImage(track: Track?) {
     Glide.with(this.context)
-        .load(track?.images?.get(1))
+        .load(track?.images?.get(2)?.url)
         .error(DEFAULT_IMAGE)
         .placeholder(DEFAULT_IMAGE)
         .fallback(DEFAULT_IMAGE)

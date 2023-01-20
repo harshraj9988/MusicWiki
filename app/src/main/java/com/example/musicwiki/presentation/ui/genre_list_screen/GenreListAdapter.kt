@@ -23,11 +23,6 @@ class GenreListAdapter(
         val genre = getItem(position)
         holder.bind(genre, clickListener)
     }
-
-    override fun submitList(list: List<Genre>?) {
-        Log.e("submitList", list.toString(), )
-        super.submitList(list)
-    }
 }
 
 class GenreListViewHolder constructor(private val binding: GenreListItemBinding) :
@@ -38,7 +33,6 @@ class GenreListViewHolder constructor(private val binding: GenreListItemBinding)
     ) {
         binding.genre = item
         binding.clickListener = clickListener
-        Log.d("bind", item.toString())
     }
 
     companion object {

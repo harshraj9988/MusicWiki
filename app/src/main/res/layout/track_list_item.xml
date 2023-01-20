@@ -13,18 +13,13 @@
     </data>
 
     <FrameLayout
-        android:layout_width="130dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
         android:background="@drawable/rounded_corner_10_dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_behind_text"
             android:clickable="true"
             android:elevation="6dp"
             android:foreground="?android:attr/selectableItemBackground"
@@ -35,7 +30,7 @@
                 android:layout_height="match_parent"
                 track_cover_image="@{track}"
                 android:background="@drawable/gradient_behind_text"
-                android:scaleType="centerInside"/>
+                android:scaleType="center"/>
 
             <TextView
                 android:id="@+id/title"

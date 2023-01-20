@@ -7,20 +7,20 @@ import com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragme
 import com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.ArtistsFragment
 import com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.TracksFragment
 
-class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class PagerAdapter(fragment: Fragment, private val viewModel: GenreInfoViewModel) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
         return 3
     }
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> { AlbumsFragment() }
-            1 -> { ArtistsFragment() }
-            else -> { TracksFragment() }
+            0 -> { AlbumsFragment(viewModel) }
+            1 -> { ArtistsFragment(viewModel) }
+            else -> { TracksFragment(viewModel) }
         }
     }
 
-    fun getPageTitle(position: Int) : String {
+    fun getPageTitle(position: Int) : CharSequence {
         return when(position) {
             0 -> "Albums"
             1 -> "Artists"

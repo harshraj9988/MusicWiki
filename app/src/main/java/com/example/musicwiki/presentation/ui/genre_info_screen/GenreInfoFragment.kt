@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.example.musicwiki.R
 import com.example.musicwiki.databinding.FragmentGenreInfoBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,9 +37,12 @@ class GenreInfoFragment : Fragment() {
             Toast.makeText(context, "Error! Please try again", Toast.LENGTH_SHORT).show()
         }
 
-        val pagerAdapter = PagerAdapter( activity as FragmentActivity )
-
+        val pagerAdapter = PagerAdapter( this , viewModel)
         binding.viewPager.adapter = pagerAdapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text =  pagerAdapter.getPageTitle(position)
+        }.attach()
 
         return binding.root
     }

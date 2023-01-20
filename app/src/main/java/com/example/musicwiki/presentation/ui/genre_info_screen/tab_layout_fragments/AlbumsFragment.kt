@@ -1,6 +1,7 @@
 package com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +19,11 @@ import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoViewMode
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AlbumsFragment : Fragment() {
+class AlbumsFragment(
+    private val viewModel: GenreInfoViewModel
+) : Fragment() {
 
     private lateinit var binding: FragmentAlbumsBinding
-    private val viewModel: GenreInfoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +44,7 @@ class AlbumsFragment : Fragment() {
 
         viewModel.topAlbums.observe(viewLifecycleOwner) {list ->
             list?.let {
+                Log.i("albumsFragment", list.toString())
                 adapter.submitList(it)
                 adapter.notifyItemRangeInserted(0, it.size)
             }
