@@ -1,5 +1,6 @@
 package com.example.musicwiki.presentation.ui.genre_list_screen
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -30,6 +31,8 @@ class GenreListViewHolder constructor(private val binding: GenreListItemBinding)
         item: Genre
     ) {
         binding.genre = item
+
+        Log.d("bind", item.toString())
     }
 
     companion object {

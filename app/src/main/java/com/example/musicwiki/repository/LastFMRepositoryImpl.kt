@@ -6,6 +6,7 @@ import com.example.musicwiki.network.response.AlbumListResponse
 import com.example.musicwiki.network.response.ArtistListResponse
 import com.example.musicwiki.network.response.GenreListResponse
 import com.example.musicwiki.network.response.TrackListResponse
+import com.example.musicwiki.presentation.BaseApplication
 
 class LastFMRepositoryImpl(
     private val lastFMService: LastFMService
