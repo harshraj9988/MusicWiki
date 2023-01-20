@@ -6,13 +6,13 @@ interface LastFMRepository {
 
     suspend fun getGenreList(): List<Genre>?
 
-    suspend fun getGenreInfo(query: String): Genre?
+    suspend fun getGenreInfo(genre: String): Genre?
 
-    suspend fun getArtistList(query: String): List<Artist>?
+    suspend fun getArtistList(genre: String): List<Artist>?
 
-    suspend fun getAlbumList(query: String): List<Album>?
+    suspend fun getAlbumList(genre: String): List<Album>?
 
-    suspend fun getTrackList(query: String): List<Track>?
+    suspend fun getTrackList(genre: String): List<Track>?
 
     suspend fun getArtistInfo(artist: String): Artist?
 

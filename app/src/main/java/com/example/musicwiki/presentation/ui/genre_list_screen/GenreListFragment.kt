@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicwiki.R
@@ -28,7 +29,14 @@ class GenreListFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_list, container, false)
 
-        val adapter = GenreListAdapter()
+        val adapter = CustomListAdapter (CustomClickListener {
+            it?.let {
+                Navigation.findNavController(requireView()).navigate(
+                    GenreListFragmentDirections.actionGenreListFragmentToGenreInfoFragment(it.name)
+                )
+            }
+        })
+
         var isExpanded = false
 
         var fullList: List<Genre>? = null
@@ -64,7 +72,7 @@ class GenreListFragment : Fragment() {
 
     private fun expandShrinkGenreList(
         fullList: List<Genre>?,
-        adapter: GenreListAdapter,
+        adapter: CustomListAdapter,
         isExpanded: Boolean,
         initialList: List<Genre>?
     ) {
@@ -79,7 +87,7 @@ class GenreListFragment : Fragment() {
         }
     }
 
-    private fun submitList(adapter: GenreListAdapter, list: List<Genre>, isExpanded: Boolean) {
+    private fun submitList(adapter: CustomListAdapter, list: List<Genre>, isExpanded: Boolean) {
         adapter.submitList(list)
         if (adapter.itemCount > 0) {
             if(isExpanded){

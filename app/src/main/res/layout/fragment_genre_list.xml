@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,29 +10,66 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.genre_list_screen.GenreListFragment"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        tools:context=".presentation.ui.genre_list_screen.GenreListFragment">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="180dp">
 
             <TextView
+                android:id="@+id/header_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Genres"
-                android:textSize="30.sp"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/maven_pro"
+                android:textStyle="bold"
+                android:text="musicwiki"
                 android:textColor="@color/black"
-                android:layout_centerInParent="true"/>
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Welcome!"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_above="@id/message"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/maven_pro"
+                />
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Choose a genre!"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_above="@id/expand"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/maven_pro"
+                />
+
+
 
             <Button
                 android:id="@+id/expand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Expand"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"/>
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_corner_20_dp"
+                android:fontFamily="@font/maven_pro"
+                android:text="Expand "
+                android:textAlignment="center"
+                android:textSize="10dp" />
 
         </RelativeLayout>
 
@@ -40,8 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:listitem="@layout/genre_list_item"
-            />
+            tools:listitem="@layout/genre_list_item" />
 
 
     </LinearLayout>

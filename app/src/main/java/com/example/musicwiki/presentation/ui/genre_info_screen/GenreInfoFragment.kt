@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.musicwiki.R
@@ -16,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class GenreInfoFragment : Fragment() {
 
     private lateinit var binding: FragmentGenreInfoBinding
+    private lateinit var args: GenreInfoFragmentArgs
     private val viewModel: GenreInfoViewModel by viewModels()
 
     override fun onCreateView(
@@ -23,6 +25,14 @@ class GenreInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_info, container, false)
+
+        args = GenreInfoFragmentArgs.fromBundle(requireArguments())
+
+        if(args.genre!=null) {
+            viewModel.getGenreInfo(args.genre)
+        }else{
+            Toast.makeText(context, "Error! Please try again", Toast.LENGTH_SHORT).show()
+        }
 
 
         return binding.root

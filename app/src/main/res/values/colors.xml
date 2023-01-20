@@ -6,6 +6,6 @@
     <color name="color_2">#FF393634</color>
     <color name="color_3">#FF5f623f</color>
     <color name="color_4">#FFdbd7de</color>
-    <color name="text_on_bright">#FFFFFF</color>
-    <color name="text_on_dark">#FF000000</color>
+    <color name="text_on_bright">#FF000000</color>
+    <color name="text_on_dark">#FFFFFFFF</color>
 </resources>
