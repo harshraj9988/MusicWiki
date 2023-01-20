@@ -5,12 +5,12 @@
     <data>
 
         <variable
-            name="genre"
-            type="com.example.musicwiki.network.model.Genre" />
+            name="album"
+            type="com.example.musicwiki.network.model.Album" />
 
         <variable
             name="clickListener"
-            type="com.example.musicwiki.presentation.ui.genre_list_screen.GenreClickListener" />
+            type="com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.AlbumClickListener" />
     </data>
 
     <FrameLayout
@@ -29,11 +29,18 @@
             android:clickable="true"
             android:elevation="6dp"
             android:foreground="?android:attr/selectableItemBackground"
-            android:onClick="@{() -> clickListener.onClick(genre)}">
+            android:onClick="@{() -> clickListener.onClick(album)}">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                album_cover_image="@{album}"
+                android:background="@drawable/gradient_behind_text"
+                android:scaleType="centerInside"/>
 
             <TextView
                 android:id="@+id/title"
-                genre_title="@{genre}"
+                album_title="@{album}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

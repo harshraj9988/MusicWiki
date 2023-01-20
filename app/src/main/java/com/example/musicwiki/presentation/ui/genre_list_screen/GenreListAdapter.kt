@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.musicwiki.databinding.GenreListItemBinding
 import com.example.musicwiki.network.model.Genre
 
-class CustomListAdapter(
-    private val clickListener: CustomClickListener
+class GenreListAdapter(
+    private val clickListener: GenreClickListener
 ) : ListAdapter<Genre, GenreListViewHolder>(
     GenreDiffCallback()
 ) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreListViewHolder {
         return GenreListViewHolder.from(parent)
@@ -24,14 +23,18 @@ class CustomListAdapter(
         val genre = getItem(position)
         holder.bind(genre, clickListener)
     }
+
+    override fun submitList(list: List<Genre>?) {
+        Log.e("submitList", list.toString(), )
+        super.submitList(list)
+    }
 }
 
 class GenreListViewHolder constructor(private val binding: GenreListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
     fun bind(
         item: Genre,
-        clickListener: CustomClickListener
+        clickListener: GenreClickListener
     ) {
         binding.genre = item
         binding.clickListener = clickListener
@@ -57,7 +60,7 @@ class GenreDiffCallback : DiffUtil.ItemCallback<Genre>() {
     }
 }
 
-class CustomClickListener(
+class GenreClickListener(
     val clickListener: (genre: Genre?) -> Unit,
 ) {
     fun onClick(genre: Genre) = clickListener(genre)

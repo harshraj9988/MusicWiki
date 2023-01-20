@@ -1,6 +1,7 @@
 package com.example.musicwiki.presentation.ui.genre_list_screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class GenreListFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_list, container, false)
 
-        val adapter = CustomListAdapter (CustomClickListener {
+        val adapter = GenreListAdapter(GenreClickListener {
             it?.let {
                 Navigation.findNavController(requireView()).navigate(
                     GenreListFragmentDirections.actionGenreListFragmentToGenreInfoFragment(it.name)
@@ -49,8 +50,10 @@ class GenreListFragment : Fragment() {
 
         viewModel.genreList.observe(viewLifecycleOwner) { list ->
             list?.let {
+
                 fullList = list
                 initialList = list.subList(0, list.size.coerceAtMost(10))
+
                 if (isExpanded) adapter.submitList(fullList)
                 else adapter.submitList(initialList)
                 adapter.notifyItemRangeInserted(0, adapter.itemCount)
@@ -59,7 +62,7 @@ class GenreListFragment : Fragment() {
 
         viewModel.isExpanded.observe(viewLifecycleOwner) {
             isExpanded = it
-            binding.expand.text = if(it) "shrink" else "expand"
+            binding.expand.text = if (it) "shrink" else "expand"
             expandShrinkGenreList(fullList, adapter, isExpanded, initialList)
         }
 
@@ -72,7 +75,7 @@ class GenreListFragment : Fragment() {
 
     private fun expandShrinkGenreList(
         fullList: List<Genre>?,
-        adapter: CustomListAdapter,
+        adapter: GenreListAdapter,
         isExpanded: Boolean,
         initialList: List<Genre>?
     ) {
@@ -87,10 +90,10 @@ class GenreListFragment : Fragment() {
         }
     }
 
-    private fun submitList(adapter: CustomListAdapter, list: List<Genre>, isExpanded: Boolean) {
+    private fun submitList(adapter: GenreListAdapter, list: List<Genre>, isExpanded: Boolean) {
         adapter.submitList(list)
         if (adapter.itemCount > 0) {
-            if(isExpanded){
+            if (isExpanded) {
                 adapter.notifyItemRangeInserted(
                     adapter.itemCount, list.size - adapter.itemCount
                 )

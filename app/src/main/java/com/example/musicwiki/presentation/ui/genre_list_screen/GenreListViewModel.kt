@@ -25,7 +25,6 @@ constructor(
     val isExpanded: LiveData<Boolean> = _isExpanded
 
     init {
-        //TODO: check for internet before calling this
         viewModelScope.launch(Dispatchers.IO) {
             _genreList.postValue(
                 lastFMRepository.getGenreList()

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.example.musicwiki.R
 import com.example.musicwiki.databinding.FragmentGenreInfoBinding
@@ -34,6 +35,9 @@ class GenreInfoFragment : Fragment() {
             Toast.makeText(context, "Error! Please try again", Toast.LENGTH_SHORT).show()
         }
 
+        val pagerAdapter = PagerAdapter( activity as FragmentActivity )
+
+        binding.viewPager.adapter = pagerAdapter
 
         return binding.root
     }
