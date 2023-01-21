@@ -22,7 +22,7 @@ The following are the decisions made during the development of the application:<
 
 * Separation of concerns: MVVM separates the UI and business logic<br>
 * Better code reuse
-* Better code readabiliy
+* Better code readability
 * Better performance
 
 2. The library chosen for handling API calls in this application is Retrofit, for the following reasons:
@@ -47,3 +47,6 @@ The following are the assumptions made during the production of the application:
 
 1.  The data stored on the Last.fm server is expected to remain relatively static. <br>
     In the event that the data on the Last.fm server is dynamic in nature, we would have employed the use of Kotlin flows to monitor and update the data at regular intervals.
+
+## Tests
+Unit tests have been implemented for both the viewModels and the Repository.
