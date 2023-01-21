@@ -39,13 +39,13 @@ class ArtistGenresFragment(
                 )
             }
         })
+
         binding.recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
         binding.recyclerView.setHasFixedSize(false)
         binding.recyclerView.adapter = adapter
 
         viewModel.topGenres.observe(viewLifecycleOwner) {list ->
             list?.let {
-                Log.e("ArtistGenresFragment", it.toString())
                 if(adapter.itemCount == 0){
                     adapter.submitList(it)
                     adapter.notifyItemRangeInserted(0, it.size)
@@ -58,5 +58,6 @@ class ArtistGenresFragment(
 
         return binding.root
     }
+
 
 }

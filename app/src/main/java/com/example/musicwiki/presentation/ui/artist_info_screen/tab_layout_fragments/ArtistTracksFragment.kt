@@ -38,7 +38,6 @@ class ArtistTracksFragment(
 
         viewModel.topTracks.observe(viewLifecycleOwner) {list ->
             list?.let {
-                Log.i("ArtistTracksFragment", it.toString())
 
                 if(adapter.itemCount == 0){
                     adapter.submitList(it)

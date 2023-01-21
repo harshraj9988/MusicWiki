@@ -23,6 +23,8 @@ class ArtistGenresListAdapter(
         val artist = getItem(position)
         holder.bind(artist, clickListener)
     }
+
+
 }
 
 class ArtistGenresListViewHolder constructor(private val binding: ArtistGenresListItemBinding) :

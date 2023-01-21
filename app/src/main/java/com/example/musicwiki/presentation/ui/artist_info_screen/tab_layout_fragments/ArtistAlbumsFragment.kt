@@ -46,7 +46,6 @@ class ArtistAlbumsFragment(
 
         viewModel.topAlbums.observe(viewLifecycleOwner) {list ->
             list?.let {
-                Log.d("ArtistAlbumsFragment", it.toString())
                 if(adapter.itemCount == 0){
                     adapter.submitList(it)
                     adapter.notifyItemRangeInserted(0, it.size)

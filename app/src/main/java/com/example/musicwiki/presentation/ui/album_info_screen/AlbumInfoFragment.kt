@@ -1,7 +1,6 @@
 package com.example.musicwiki.presentation.ui.album_info_screen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +36,7 @@ class AlbumInfoFragment : Fragment() {
             Toast.makeText(context, "Error! Please try again", Toast.LENGTH_SHORT).show()
         }
 
-        val adapter = ArtistGenresListAdapter(ArtistGenresClickListener {
+        val adapter = AlbumGenresListAdapter(AlbumGenresClickListener {
             it?.let {
                 Navigation.findNavController(requireView()).navigate(
                     AlbumInfoFragmentDirections.actionAlbumInfoFragmentToGenreInfoFragment(it.name)
@@ -68,10 +67,9 @@ class AlbumInfoFragment : Fragment() {
                 binding.invalidateAll()
             }
         }
-
-
-
         return binding.root
     }
+
+
 
 }

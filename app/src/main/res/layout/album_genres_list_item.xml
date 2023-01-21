@@ -1,47 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="artist"
-            type="com.example.musicwiki.network.model.Artist" />
+            name="genre"
+            type="com.example.musicwiki.network.model.Genre" />
 
         <variable
             name="clickListener"
-            type="com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.GenreArtistClickListener" />
+            type="com.example.musicwiki.presentation.ui.album_info_screen.AlbumGenresClickListener" />
     </data>
 
     <FrameLayout
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginRight="1dp"
-        android:background="@drawable/rounded_corner_10_color_1_dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_corner_20_color_3_dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:elevation="6dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:foreground="?android:attr/selectableItemBackground"
-            android:onClick="@{() -> clickListener.onClick(artist)}">
+            android:onClick="@{() -> clickListener.onClick(genre)}">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                artist_cover_image="@{artist}"
-                android:scaleType="center"/>
 
             <TextView
                 android:id="@+id/title"
-                artist_title="@{artist}"
+                genre_title="@{genre}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/maven_pro"
                 android:padding="8dp"
+                tools:text="Electronic metal"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/text_on_dark"

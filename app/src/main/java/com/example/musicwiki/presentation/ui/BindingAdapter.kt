@@ -76,12 +76,12 @@ fun TextView.setTitle(artist: Artist?) {
 
 @BindingAdapter("artist_followers")
 fun TextView.setFollowers(artist: Artist?) {
-    this.text = artist?.name ?: ""
+    this.text = artist?.stats?.followers?:" - "
 }
 
 @BindingAdapter("artist_playcount")
 fun TextView.setPlayCount(artist: Artist?) {
-    this.text = artist?.name ?: ""
+    this.text = artist?.stats?.playCount?:" - "
 }
 
 @BindingAdapter("artist_info_description")
