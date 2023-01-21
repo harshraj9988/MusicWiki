@@ -15,7 +15,7 @@
     <FrameLayout
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:background="@drawable/rounded_corner_10_dp">
+        android:background="@drawable/rounded_corner_10_color_1_dp">
 
         <RelativeLayout
             android:layout_width="match_parent"

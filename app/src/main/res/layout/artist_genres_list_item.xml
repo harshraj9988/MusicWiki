@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,16 +15,18 @@
     </data>
 
     <FrameLayout
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:background="@drawable/rounded_corner_10_dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_corner_20_color_3_dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:elevation="6dp"
-            android:background="@drawable/gradient_behind_text"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:onClick="@{() -> clickListener.onClick(genre)}">
 
@@ -36,6 +39,7 @@
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/maven_pro"
                 android:padding="8dp"
+                tools:text="Electronic metal"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/text_on_dark"

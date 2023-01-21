@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicwiki.R
 import com.example.musicwiki.databinding.FragmentAlbumInfoBinding
+import com.example.musicwiki.presentation.ui.artist_info_screen.tab_layout_fragments.ArtistGenresClickListener
+import com.example.musicwiki.presentation.ui.artist_info_screen.tab_layout_fragments.ArtistGenresListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,15 +36,37 @@ class AlbumInfoFragment : Fragment() {
             Toast.makeText(context, "Error! Please try again", Toast.LENGTH_SHORT).show()
         }
 
-        viewModel.albumInfo.observe(viewLifecycleOwner){
+        val adapter = ArtistGenresListAdapter(ArtistGenresClickListener {
             it?.let {
-                Log.d("AlbumInfoFragment", it.toString())
-                binding.albumInfo = it
+
+            }
+        })
+
+        binding.albumInfoGenreRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        binding.albumInfoGenreRecyclerView.setHasFixedSize(false)
+        binding.albumInfoGenreRecyclerView.adapter = adapter
+
+        viewModel.albumInfo.observe(viewLifecycleOwner) {
+            it?.let { albumInfo ->
+                albumInfo.genreList?.let { genreList ->
+                    genreList.genres?.let { genres ->
+                        if (adapter.itemCount > 0) {
+                            adapter.submitList(genres)
+                            adapter.notifyItemRangeChanged(0, genres.size)
+                        } else {
+                            adapter.submitList(genres)
+                            adapter.notifyItemRangeInserted(0, genres.size)
+                        }
+                    }
+                }
+                binding.albumInfo = albumInfo
                 binding.invalidateAll()
             }
         }
 
-        //TODO: implement horizontal recycler view for genres
+
 
         return binding.root
     }
