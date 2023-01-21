@@ -21,17 +21,17 @@ constructor(
     private val lastFMRepository: LastFMRepository
 ) : ViewModel() {
 
-    private val _artist = MutableLiveData<Artist>(Artist())
-    val artist: LiveData<Artist> = _artist
+    private val _artist = MutableLiveData<Artist?>(null)
+    val artist: LiveData<Artist?> = _artist
 
-    private val _topTracks = MutableLiveData<List<Track>>(emptyList())
-    val topTracks: LiveData<List<Track>> = _topTracks
+    private val _topTracks = MutableLiveData<List<Track>?>(null)
+    val topTracks: LiveData<List<Track>?> = _topTracks
 
-    private val _topAlbums = MutableLiveData<List<Album>>(emptyList())
-    val topAlbums: LiveData<List<Album>> = _topAlbums
+    private val _topAlbums = MutableLiveData<List<Album>?>(null)
+    val topAlbums: LiveData<List<Album>?> = _topAlbums
 
-    private val _topGenres = MutableLiveData<List<Genre>>(emptyList())
-    val topGenres: LiveData<List<Genre>> = _topGenres
+    private val _topGenres = MutableLiveData<List<Genre>?>(null)
+    val topGenres: LiveData<List<Genre>?> = _topGenres
 
     fun getArtistInfo(artist: String) {
         fetchArtistInfo(artist)

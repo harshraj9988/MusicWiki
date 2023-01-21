@@ -18,15 +18,15 @@ constructor(
    private val lastFMRepository: LastFMRepository
 ) : ViewModel() {
 
-    private val _albumInfo = MutableLiveData<AlbumInfo>(AlbumInfo())
-    val albumInfo: LiveData<AlbumInfo> = _albumInfo
+    private val _albumInfo = MutableLiveData<AlbumInfo?>(null)
+    val albumInfo: LiveData<AlbumInfo?> = _albumInfo
     fun getAlbumInfo(album: String, artist: String) {
         fetchAlbumInfo(album, artist)
     }
 
     private fun fetchAlbumInfo(album: String, artist: String) {
         viewModelScope.launch(Dispatchers.IO) {
-           if(album.isNotEmpty() && artist.isEmpty()){
+           if(album.isNotEmpty() && artist.isNotEmpty()){
                _albumInfo.postValue(lastFMRepository.getAlbumInfo(album, artist))
            }
         }

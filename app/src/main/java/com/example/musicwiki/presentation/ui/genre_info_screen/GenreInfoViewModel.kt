@@ -37,34 +37,33 @@ constructor(
 
     fun getGenreInfo(genreName: String?) {
         genreName?.let {
-            this.genreName = genreName
 
-            fetchGenreInfo()
-            fetchGenreTopAlbums()
-            fetchGenreTopArtist()
-            fetchGenreTopTracks()
+            fetchGenreInfo(it)
+            fetchGenreTopAlbums(it)
+            fetchGenreTopArtist(it)
+            fetchGenreTopTracks(it)
         }
     }
 
-    private fun fetchGenreInfo() {
+    private fun fetchGenreInfo(genreName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _genreInfo.postValue(lastFMRepository.getGenreInfo(genreName))
         }
     }
 
-    private fun fetchGenreTopAlbums() {
+    private fun fetchGenreTopAlbums(genreName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _topAlbums.postValue(lastFMRepository.getAlbumList(genreName))
         }
     }
 
-    private fun fetchGenreTopArtist() {
+    private fun fetchGenreTopArtist(genreName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _topArtists.postValue(lastFMRepository.getArtistList(genreName))
         }
     }
 
-    private fun fetchGenreTopTracks() {
+    private fun fetchGenreTopTracks(genreName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _topTracks.postValue(lastFMRepository.getTrackList(genreName))
         }

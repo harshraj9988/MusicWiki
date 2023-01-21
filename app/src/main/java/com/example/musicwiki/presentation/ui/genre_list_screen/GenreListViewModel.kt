@@ -18,8 +18,8 @@ constructor(
     private val lastFMRepository: LastFMRepository
 ) : ViewModel() {
 
-    private val _genreList = MutableLiveData<List<Genre>>(emptyList())
-    val genreList: LiveData<List<Genre>> = _genreList
+    private val _genreList = MutableLiveData<List<Genre>?>(null)
+    val genreList: LiveData<List<Genre>?> = _genreList
 
     private val _isExpanded = MutableLiveData(false)
     val isExpanded: LiveData<Boolean> = _isExpanded
