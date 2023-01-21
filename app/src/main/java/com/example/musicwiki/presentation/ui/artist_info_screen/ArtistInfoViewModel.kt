@@ -21,49 +21,46 @@ constructor(
     private val lastFMRepository: LastFMRepository
 ) : ViewModel() {
 
-    private var artistName: String? = null
+    private val _artist = MutableLiveData<Artist>(Artist())
+    val artist: LiveData<Artist> = _artist
 
-    private val _artist = MutableLiveData<Artist?>(null)
-    val artist: LiveData<Artist?> = _artist
+    private val _topTracks = MutableLiveData<List<Track>>(emptyList())
+    val topTracks: LiveData<List<Track>> = _topTracks
 
-    private val _topTracks = MutableLiveData<List<Track>?>(null)
-    val topTracks: LiveData<List<Track>?> = _topTracks
+    private val _topAlbums = MutableLiveData<List<Album>>(emptyList())
+    val topAlbums: LiveData<List<Album>> = _topAlbums
 
-    private val _topAlbums = MutableLiveData<List<Album>?>(null)
-    val topAlbums: LiveData<List<Album>?> = _topAlbums
-
-    private val _topGenres = MutableLiveData<List<Genre>?>(null)
-    val topGenres: LiveData<List<Genre>?> = _topGenres
+    private val _topGenres = MutableLiveData<List<Genre>>(emptyList())
+    val topGenres: LiveData<List<Genre>> = _topGenres
 
     fun getArtistInfo(artist: String) {
-        this.artistName = artist
-        fetchArtistInfo()
-        fetchArtistTopAlbums()
-        fetchArtistTopTracks()
-        fetchArtistTopGenres()
+        fetchArtistInfo(artist)
+        fetchArtistTopAlbums(artist)
+        fetchArtistTopTracks(artist)
+        fetchArtistTopGenres(artist)
     }
 
-    private fun fetchArtistInfo() {
+    private fun fetchArtistInfo(artist: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _artist.postValue(lastFMRepository.getArtistInfo(artistName!!))
+            _artist.postValue(lastFMRepository.getArtistInfo(artist))
         }
     }
 
-    private fun fetchArtistTopAlbums() {
+    private fun fetchArtistTopAlbums(artist: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _topAlbums.postValue(lastFMRepository.getArtistTopAlbums(artistName!!))
+            _topAlbums.postValue(lastFMRepository.getArtistTopAlbums(artist))
         }
     }
 
-    private fun fetchArtistTopGenres() {
+    private fun fetchArtistTopGenres(artist: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _topGenres.postValue(lastFMRepository.getArtistTopGenres(artistName!!))
+            _topGenres.postValue(lastFMRepository.getArtistTopGenres(artist))
         }
     }
 
-    private fun fetchArtistTopTracks() {
+    private fun fetchArtistTopTracks(artist: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _topTracks.postValue(lastFMRepository.getArtistTopTracks(artistName!!))
+            _topTracks.postValue(lastFMRepository.getArtistTopTracks(artist))
         }
     }
 }
