@@ -21,10 +21,14 @@ constructor(
     private val _genreList = MutableLiveData<List<Genre>?>(null)
     val genreList: LiveData<List<Genre>?> = _genreList
 
-    private val _isExpanded = MutableLiveData<Boolean>(false)
+    private val _isExpanded = MutableLiveData(false)
     val isExpanded: LiveData<Boolean> = _isExpanded
 
     init {
+        fetchGenreList()
+    }
+
+     fun fetchGenreList(){
         viewModelScope.launch(Dispatchers.IO) {
             _genreList.postValue(
                 lastFMRepository.getGenreList()

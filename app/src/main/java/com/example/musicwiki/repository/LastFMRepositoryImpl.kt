@@ -7,6 +7,7 @@ import com.example.musicwiki.network.response.*
 class LastFMRepositoryImpl(
     private val lastFMService: LastFMService
 ) : LastFMRepository {
+
     override suspend fun getGenreList(): List<Genre>? {
         val genreListResponse: GenreListResponse = lastFMService.getGenreListResponse()
         return genreListResponse.topGenres?.genres
