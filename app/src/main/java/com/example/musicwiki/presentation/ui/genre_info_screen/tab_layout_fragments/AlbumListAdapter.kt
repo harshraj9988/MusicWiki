@@ -35,7 +35,6 @@ class AlbumListViewHolder constructor(private val binding: AlbumListItemBinding)
     ) {
         binding.album = item
         binding.clickListener = clickListener
-        Log.d("bind", item.toString())
     }
 
     companion object {

@@ -4,17 +4,96 @@
 
     <data>
 
+        <variable
+            name="album_info"
+            type="com.example.musicwiki.network.model.AlbumInfo" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".presentation.ui.album_info_screen.AlbumInfoFragment">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="@color/color_2">
 
+            <ImageView
+
+                album_info_cover_image="@{album_info}"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="32dp"
+                android:scaleType="center"
+                tools:src="@drawable/default_image"
+                android:shadowColor="@color/black"
+                android:shadowRadius="10"
+                />
+
+            <TextView
+                album_info_title="@{album_info}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/artist"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_mono"
+                android:textColor="@color/text_on_dark"
+                android:textSize="34sp"
+                android:shadowColor="@color/black"
+                android:shadowRadius="10"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                tools:text="Rock" />
+
+            <TextView
+                android:id="@+id/artist"
+                album_info_artist="@{album_info}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/description"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/maven_pro"
+                android:textColor="@color/text_on_dark"
+                android:textSize="24sp"
+                tools:text="Rock" />
+
+            <TextView
+                android:id="@+id/description"
+                album_info_description="@{album_info}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/basic"
+                android:maxLines="5"
+                android:scrollbars="vertical"
+                android:textColor="@color/text_on_dark"
+                android:textSize="20sp"
+                tools:text="Disco is a genre of dance-oriented music that originated in African American, gay and Hispanic American communities in 1970s. In what is considered a forerunner to disco style clubs in February 1970 New York City DJ David Mancuso opened The Loft, a members-only private dance club set in his own home. Most agree that the first disco songs were released in 1973, though some claim that Soul Makossa by Manu Dibango's from 1972 to be the first disco record. " />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/album_info_genre_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:background="@color/color_1" />
     </LinearLayout>
 </layout>

@@ -5,16 +5,22 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.musicwiki.R
-import com.example.musicwiki.network.model.Album
-import com.example.musicwiki.network.model.Artist
-import com.example.musicwiki.network.model.Genre
-import com.example.musicwiki.network.model.Track
+import com.example.musicwiki.network.model.*
 
 const val DEFAULT_IMAGE = R.drawable.default_image
 
 @BindingAdapter("genre_title")
 fun TextView.setTitle(genre: Genre?) {
     this.text = genre?.name ?: ""
+}
+
+@BindingAdapter("genre_description")
+fun TextView.setDescription(genre: Genre?) {
+    var descrpiption = ""
+    genre?.description?.summary?.let {
+       descrpiption = (it.split("<"))[0]
+    }
+    this.text = descrpiption
 }
 
 @BindingAdapter("album_title")
@@ -62,3 +68,34 @@ fun ImageView.loadImage(track: Track?) {
         .fallback(DEFAULT_IMAGE)
         .into(this)
 }
+
+
+@BindingAdapter("album_info_cover_image")
+fun ImageView.loadImage(albumInfo: AlbumInfo?) {
+    Glide.with(this.context)
+        .load(albumInfo?.images?.get(3)?.url)
+        .error(DEFAULT_IMAGE)
+        .placeholder(DEFAULT_IMAGE)
+        .fallback(DEFAULT_IMAGE)
+        .into(this)
+}
+
+@BindingAdapter("album_info_title")
+fun TextView.setTitle(albumInfo: AlbumInfo?) {
+    this.text = albumInfo?.name ?: ""
+}
+
+@BindingAdapter("album_info_description")
+fun TextView.setDescription(albumInfo: AlbumInfo?) {
+    var descrpiption = ""
+    albumInfo?.description?.summary?.let {
+        descrpiption = (it.split("<"))[0]
+    }
+    this.text = descrpiption
+}
+
+@BindingAdapter("album_info_artist")
+fun TextView.setArtist(albumInfo: AlbumInfo?) {
+    this.text = albumInfo?.artist?:""
+}
+

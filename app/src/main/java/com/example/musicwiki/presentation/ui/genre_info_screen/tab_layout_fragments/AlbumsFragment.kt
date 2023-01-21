@@ -18,7 +18,7 @@ import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoFragment
 import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class AlbumsFragment(
     private val viewModel: GenreInfoViewModel
 ) : Fragment() {
@@ -44,9 +44,13 @@ class AlbumsFragment(
 
         viewModel.topAlbums.observe(viewLifecycleOwner) {list ->
             list?.let {
-                Log.i("albumsFragment", list.toString())
-                adapter.submitList(it)
-                adapter.notifyItemRangeInserted(0, it.size)
+                if(adapter.itemCount == 0){
+                    adapter.submitList(it)
+                    adapter.notifyItemRangeInserted(0, it.size)
+                }else{
+                    adapter.submitList(it)
+                    adapter.notifyItemRangeChanged(0, it.size)
+                }
             }
         }
 

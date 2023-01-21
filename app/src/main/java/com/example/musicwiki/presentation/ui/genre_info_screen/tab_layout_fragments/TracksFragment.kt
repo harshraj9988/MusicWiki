@@ -40,9 +40,13 @@ class TracksFragment(
 
         viewModel.topTracks.observe(viewLifecycleOwner) {list ->
             list?.let {
-                Log.d("tracksFragment", list.toString())
-                adapter.submitList(it)
-                adapter.notifyItemRangeInserted(0, it.size)
+                if(adapter.itemCount == 0){
+                    adapter.submitList(it)
+                    adapter.notifyItemRangeInserted(0, it.size)
+                }else{
+                    adapter.submitList(it)
+                    adapter.notifyItemRangeChanged(0, it.size)
+                }
             }
         }
 

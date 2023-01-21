@@ -35,7 +35,6 @@ class TrackListViewHolder constructor(private val binding: TrackListItemBinding)
     ) {
         binding.track = item
         binding.clickListener = clickListener
-        Log.d("bind", item.toString())
     }
 
     companion object {

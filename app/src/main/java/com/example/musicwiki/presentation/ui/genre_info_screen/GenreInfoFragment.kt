@@ -44,6 +44,13 @@ class GenreInfoFragment : Fragment() {
             tab.text =  pagerAdapter.getPageTitle(position)
         }.attach()
 
+        viewModel.genreInfo.observe(viewLifecycleOwner) {
+            it?.let {
+                binding.genre = it
+                binding.invalidateAll()
+            }
+        }
+
         return binding.root
     }
 

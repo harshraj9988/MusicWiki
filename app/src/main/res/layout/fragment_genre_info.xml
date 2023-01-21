@@ -17,14 +17,45 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/genre_info_parent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="14">
+            android:layout_weight="14"
+            android:background="@color/color_2">
 
             <TextView
                 genre_title="@{genre}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_above="@id/description"
+                android:layout_alignParentStart="true"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/roboto_mono"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="10"
+                android:textAllCaps="true"
+                android:textColor="@color/text_on_dark"
+                android:textSize="34sp"
+                tools:text="Rock" />
+
+            <TextView
+                android:id="@+id/description"
+                genre_description="@{genre}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/basic"
+                android:maxLines="6"
+                android:scrollbars="vertical"
+                android:textColor="@color/text_on_dark"
+                android:textSize="20sp"
+                tools:text="Disco is a genre of dance-oriented music that originated in African American, gay and Hispanic American communities in 1970s. In what is considered a forerunner to disco style clubs in February 1970 New York City DJ David Mancuso opened The Loft, a members-only private dance club set in his own home. Most agree that the first disco songs were released in 1973, though some claim that Soul Makossa by Manu Dibango's from 1972 to be the first disco record. " />
 
         </RelativeLayout>
 
@@ -38,16 +69,18 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:tabIndicatorColor="@color/color_1"
+                android:background="@color/color_4"
                 app:tabGravity="fill"
+                app:tabIconTint="@color/color_1"
+                app:tabIndicatorColor="@color/color_1"
                 app:tabSelectedTextColor="@color/color_2"
-                app:tabTextColor="@color/white" />
+                app:tabTextColor="@color/color_3" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/color_1" />
 
         </LinearLayout>
 

@@ -35,7 +35,6 @@ class ArtistListViewHolder constructor(private val binding: ArtistListItemBindin
     ) {
         binding.artist = item
         binding.clickListener = clickListener
-        Log.d("bind", item.toString())
     }
 
     companion object {

@@ -38,6 +38,7 @@ constructor(
     fun getGenreInfo(genreName: String?) {
         genreName?.let {
             this.genreName = genreName
+
             fetchGenreInfo()
             fetchGenreTopAlbums()
             fetchGenreTopArtist()

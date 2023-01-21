@@ -1,7 +1,7 @@
 package com.example.musicwiki.network.model
 
-import android.media.Image
 import com.example.musicwiki.network.model.utils.Description
+import com.example.musicwiki.network.model.utils.Image
 import com.google.gson.annotations.SerializedName
 
 data class AlbumInfo(

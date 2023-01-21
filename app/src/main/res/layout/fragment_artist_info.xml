@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="artist"
+            type="com.example.musicwiki.network.model.Artist" />
     </data>
 
     <LinearLayout

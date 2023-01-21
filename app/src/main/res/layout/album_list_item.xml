@@ -38,13 +38,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/basic"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
+                android:fontFamily="@font/maven_pro"
+                android:padding="8dp"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/text_on_dark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="20"/>
 
         </RelativeLayout>
 
