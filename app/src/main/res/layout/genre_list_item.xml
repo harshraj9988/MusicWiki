@@ -15,7 +15,7 @@
     </data>
 
     <FrameLayout
-        android:layout_width="130dp"
+        android:layout_width="140dp"
         android:layout_height="65dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
@@ -26,7 +26,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_behind_text"
             android:clickable="true"
             android:elevation="6dp"
             android:foreground="?android:attr/selectableItemBackground"
@@ -43,7 +42,7 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/text_on_dark"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
                 android:shadowDy="2"
