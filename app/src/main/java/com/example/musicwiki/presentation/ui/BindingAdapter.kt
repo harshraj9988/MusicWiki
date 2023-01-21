@@ -1,5 +1,6 @@
 package com.example.musicwiki.presentation.ui
 
+import android.text.method.ScrollingMovementMethod
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -16,6 +17,7 @@ fun TextView.setTitle(genre: Genre?) {
 
 @BindingAdapter("genre_description")
 fun TextView.setDescription(genre: Genre?) {
+    this.movementMethod = ScrollingMovementMethod()
     var descrpiption = ""
     genre?.description?.summary?.let {
        descrpiption = (it.split("<"))[0]
@@ -50,6 +52,7 @@ fun TextView.setArtist(albumInfo: AlbumInfo?) {
 
 @BindingAdapter("album_info_description")
 fun TextView.setDescription(albumInfo: AlbumInfo?) {
+    this.movementMethod = ScrollingMovementMethod()
     var descrpiption = ""
     albumInfo?.description?.summary?.let {
         descrpiption = (it.split("<"))[0]
@@ -86,6 +89,7 @@ fun TextView.setPlayCount(artist: Artist?) {
 
 @BindingAdapter("artist_info_description")
 fun TextView.setDescription(artist: Artist?) {
+    this.movementMethod = ScrollingMovementMethod()
     var descrpiption = ""
     artist?.bio?.summary?.let {
         descrpiption = (it.split("<"))[0]
