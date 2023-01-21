@@ -28,16 +28,10 @@ fun TextView.setTitle(album: Album?) {
     this.text = album?.name ?: ""
 }
 
-@BindingAdapter("artist_title")
-fun TextView.setTitle(artist: Artist?) {
-    this.text = artist?.name ?: ""
+@BindingAdapter("album_info_title")
+fun TextView.setTitle(albumInfo: AlbumInfo?) {
+    this.text = albumInfo?.name ?: ""
 }
-
-@BindingAdapter("track_title")
-fun TextView.setTitle(track: Track?) {
-    this.text = track?.name ?: ""
-}
-
 
 @BindingAdapter("album_cover_image")
 fun ImageView.loadImage(album: Album?) {
@@ -49,24 +43,18 @@ fun ImageView.loadImage(album: Album?) {
         .into(this)
 }
 
-@BindingAdapter("artist_cover_image")
-fun ImageView.loadImage(artist: Artist?) {
-    Glide.with(this.context)
-        .load(artist?.images?.get(2)?.url)
-        .error(DEFAULT_IMAGE)
-        .placeholder(DEFAULT_IMAGE)
-        .fallback(DEFAULT_IMAGE)
-        .into(this)
+@BindingAdapter("album_info_artist")
+fun TextView.setArtist(albumInfo: AlbumInfo?) {
+    this.text = albumInfo?.artist?:""
 }
 
-@BindingAdapter("track_cover_image")
-fun ImageView.loadImage(track: Track?) {
-    Glide.with(this.context)
-        .load(track?.images?.get(2)?.url)
-        .error(DEFAULT_IMAGE)
-        .placeholder(DEFAULT_IMAGE)
-        .fallback(DEFAULT_IMAGE)
-        .into(this)
+@BindingAdapter("album_info_description")
+fun TextView.setDescription(albumInfo: AlbumInfo?) {
+    var descrpiption = ""
+    albumInfo?.description?.summary?.let {
+        descrpiption = (it.split("<"))[0]
+    }
+    this.text = descrpiption
 }
 
 
@@ -80,22 +68,59 @@ fun ImageView.loadImage(albumInfo: AlbumInfo?) {
         .into(this)
 }
 
-@BindingAdapter("album_info_title")
-fun TextView.setTitle(albumInfo: AlbumInfo?) {
-    this.text = albumInfo?.name ?: ""
+
+@BindingAdapter("artist_title")
+fun TextView.setTitle(artist: Artist?) {
+    this.text = artist?.name ?: ""
 }
 
-@BindingAdapter("album_info_description")
-fun TextView.setDescription(albumInfo: AlbumInfo?) {
+@BindingAdapter("artist_followers")
+fun TextView.setFollowers(artist: Artist?) {
+    this.text = artist?.name ?: ""
+}
+
+@BindingAdapter("artist_playcount")
+fun TextView.setPlayCount(artist: Artist?) {
+    this.text = artist?.name ?: ""
+}
+
+@BindingAdapter("artist_info_description")
+fun TextView.setDescription(artist: Artist?) {
     var descrpiption = ""
-    albumInfo?.description?.summary?.let {
+    artist?.bio?.summary?.let {
         descrpiption = (it.split("<"))[0]
     }
     this.text = descrpiption
 }
 
-@BindingAdapter("album_info_artist")
-fun TextView.setArtist(albumInfo: AlbumInfo?) {
-    this.text = albumInfo?.artist?:""
+@BindingAdapter("artist_cover_image")
+fun ImageView.loadImage(artist: Artist?) {
+    Glide.with(this.context)
+        .load(artist?.images?.get(2)?.url)
+        .error(DEFAULT_IMAGE)
+        .placeholder(DEFAULT_IMAGE)
+        .fallback(DEFAULT_IMAGE)
+        .into(this)
 }
+
+
+@BindingAdapter("track_title")
+fun TextView.setTitle(track: Track?) {
+    this.text = track?.name ?: ""
+}
+
+@BindingAdapter("track_cover_image")
+fun ImageView.loadImage(track: Track?) {
+    Glide.with(this.context)
+        .load(track?.images?.get(2)?.url)
+        .error(DEFAULT_IMAGE)
+        .placeholder(DEFAULT_IMAGE)
+        .fallback(DEFAULT_IMAGE)
+        .into(this)
+}
+
+
+
+
+
 

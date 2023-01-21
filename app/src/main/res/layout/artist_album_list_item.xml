@@ -10,7 +10,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.AlbumClickListener" />
+            type="com.example.musicwiki.presentation.ui.artist_info_screen.tab_layout_fragments.ArtistAlbumClickListener" />
     </data>
 
     <FrameLayout

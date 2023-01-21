@@ -2,10 +2,7 @@ package com.example.musicwiki.repository
 
 import com.example.musicwiki.network.LastFMService
 import com.example.musicwiki.network.model.*
-import com.example.musicwiki.network.response.AlbumListResponse
-import com.example.musicwiki.network.response.ArtistListResponse
-import com.example.musicwiki.network.response.GenreListResponse
-import com.example.musicwiki.network.response.TrackListResponse
+import com.example.musicwiki.network.response.*
 
 class LastFMRepositoryImpl(
     private val lastFMService: LastFMService
@@ -44,12 +41,12 @@ class LastFMRepositoryImpl(
     }
 
     override suspend fun getArtistTopTracks(artist: String): List<Track>? {
-        val artistTopTracksResponse: TrackListResponse = lastFMService.getArtistTopTrackListResponse(artist)
+        val artistTopTracksResponse: ArtistTrackListResponse = lastFMService.getArtistTopTrackListResponse(artist)
         return artistTopTracksResponse.topTracks?.tracks
     }
 
     override suspend fun getArtistTopAlbums(artist: String): List<Album>? {
-        val artistTopAlbumResponse: AlbumListResponse = lastFMService.getArtistTopAlbumListResponse(artist)
+        val artistTopAlbumResponse: ArtistAlbumListResponse = lastFMService.getArtistTopAlbumListResponse(artist)
         return artistTopAlbumResponse.topAlbums?.albums
     }
 

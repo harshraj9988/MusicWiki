@@ -39,39 +39,31 @@ constructor(
         this.artistName = artist
         fetchArtistInfo()
         fetchArtistTopAlbums()
-        fetchArtistTopGenres()
         fetchArtistTopTracks()
+        fetchArtistTopGenres()
     }
 
     private fun fetchArtistInfo() {
-        artistName?.let {
-            viewModelScope.launch(Dispatchers.IO) {
-                lastFMRepository.getArtistInfo(it)
-            }
+        viewModelScope.launch(Dispatchers.IO) {
+            _artist.postValue(lastFMRepository.getArtistInfo(artistName!!))
         }
     }
 
     private fun fetchArtistTopAlbums() {
-        artistName?.let {
-            viewModelScope.launch(Dispatchers.IO) {
-                _topAlbums.postValue(lastFMRepository.getArtistTopAlbums(it))
-            }
+        viewModelScope.launch(Dispatchers.IO) {
+            _topAlbums.postValue(lastFMRepository.getArtistTopAlbums(artistName!!))
         }
     }
 
     private fun fetchArtistTopGenres() {
-        artistName?.let {
-            viewModelScope.launch(Dispatchers.IO) {
-                _topGenres.postValue(lastFMRepository.getArtistTopGenres(it))
-            }
+        viewModelScope.launch(Dispatchers.IO) {
+            _topGenres.postValue(lastFMRepository.getArtistTopGenres(artistName!!))
         }
     }
 
     private fun fetchArtistTopTracks() {
-        artistName?.let {
-            viewModelScope.launch(Dispatchers.IO) {
-                _topTracks.postValue(lastFMRepository.getArtistTopTracks(it))
-            }
+        viewModelScope.launch(Dispatchers.IO) {
+            _topTracks.postValue(lastFMRepository.getArtistTopTracks(artistName!!))
         }
     }
 }

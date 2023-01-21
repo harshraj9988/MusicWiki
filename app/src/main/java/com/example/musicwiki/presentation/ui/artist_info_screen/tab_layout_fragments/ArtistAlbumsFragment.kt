@@ -1,6 +1,7 @@
-package com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments
+package com.example.musicwiki.presentation.ui.artist_info_screen.tab_layout_fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +12,17 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicwiki.R
 import com.example.musicwiki.databinding.FragmentTabLayoutRecyclerViewBinding
+import com.example.musicwiki.network.model.Artist
+import com.example.musicwiki.presentation.ui.artist_info_screen.ArtistInfoFragmentDirections
+import com.example.musicwiki.presentation.ui.artist_info_screen.ArtistInfoViewModel
 import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoFragmentDirections
 import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.GenreAlbumClickListener
+import com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments.GenreAlbumListAdapter
 
-@AndroidEntryPoint
-class GenreArtistsFragment(
-    private val viewModel: GenreInfoViewModel
+//@AndroidEntryPoint
+class ArtistAlbumsFragment(
+    private val viewModel: ArtistInfoViewModel
 ) : Fragment() {
 
     private lateinit var binding: FragmentTabLayoutRecyclerViewBinding
@@ -28,10 +33,10 @@ class GenreArtistsFragment(
     ): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_tab_layout_recycler_view, container, false)
 
-        val adapter = GenreArtistListAdapter (GenreArtistClickListener {
+        val adapter = GenreAlbumListAdapter (GenreAlbumClickListener {
             it?.let {
                 Navigation.findNavController(requireView()).navigate(
-                    GenreInfoFragmentDirections.actionGenreInfoFragmentToArtistInfoFragment(it.name)
+                    ArtistInfoFragmentDirections.actionArtistInfoFragmentToAlbumInfoFragment(it.name, it.artist?.name)
                 )
             }
         })
@@ -39,8 +44,9 @@ class GenreArtistsFragment(
         binding.recyclerView.setHasFixedSize(false)
         binding.recyclerView.adapter = adapter
 
-        viewModel.topArtists.observe(viewLifecycleOwner) {list ->
+        viewModel.topAlbums.observe(viewLifecycleOwner) {list ->
             list?.let {
+                Log.d("ArtistAlbumsFragment", it.toString())
                 if(adapter.itemCount == 0){
                     adapter.submitList(it)
                     adapter.notifyItemRangeInserted(0, it.size)
@@ -53,5 +59,4 @@ class GenreArtistsFragment(
 
         return binding.root
     }
-
 }

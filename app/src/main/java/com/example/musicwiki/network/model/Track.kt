@@ -15,9 +15,6 @@ data class Track(
     @SerializedName("url")
     var url: String? = null,
 
-    @SerializedName("streamable")
-    var streamable: Streamable? = null,
-
     @SerializedName("artist")
     var artist: Artist? = null,
 
@@ -35,11 +32,3 @@ data class Track(
 
 )
 
-data class Streamable(
-
-    @SerializedName("#text")
-    var text: String? = null,
-
-    @SerializedName("fulltrack")
-    var fulltrack: String? = null
-)

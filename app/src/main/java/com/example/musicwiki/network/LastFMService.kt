@@ -55,7 +55,7 @@ interface LastFMService {
 
     @GET(END_POINT)
     suspend fun getArtistInfoResponse(
-        @Query("tag") artist: String,
+        @Query("artist") artist: String,
         @Header("user-agent") userAgent: String = USER_AGENT,
         @Query("method") method: String = "artist.getinfo",
         @Query("api_key") apiKey: String = API_KEY,
@@ -69,7 +69,7 @@ interface LastFMService {
         @Query("method") method: String = "artist.gettoptracks",
         @Query("api_key") apiKey: String = API_KEY,
         @Query("format") format: String = "json"
-    ): TrackListResponse
+    ): ArtistTrackListResponse
 
     @GET(END_POINT)
     suspend fun getArtistTopGenreListResponse(
@@ -87,7 +87,7 @@ interface LastFMService {
         @Query("method") method: String = "artist.gettopalbums",
         @Query("api_key") apiKey: String = API_KEY,
         @Query("format") format: String = "json"
-    ): AlbumListResponse
+    ): ArtistAlbumListResponse
 
     @GET(END_POINT)
     suspend fun getAlbumInfoResponse(

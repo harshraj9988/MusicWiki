@@ -22,5 +22,5 @@ data class Album(
     var attribute: Attribute? = null,
 
     @SerializedName("playcount")
-    var playCount: Long? = null
+    var playCount: Int? = null
 )

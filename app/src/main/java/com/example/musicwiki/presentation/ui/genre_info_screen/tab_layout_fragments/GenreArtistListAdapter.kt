@@ -5,47 +5,47 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.musicwiki.databinding.ArtistListItemBinding
+import com.example.musicwiki.databinding.GenreArtistListItemBinding
 import com.example.musicwiki.network.model.Artist
 
-class ArtistListAdapter(
-    private val clickListener: ArtistClickListener
-) : ListAdapter<Artist, ArtistListViewHolder>(
-    ArtistDiffCallback()
+class GenreArtistListAdapter(
+    private val clickListener: GenreArtistClickListener
+) : ListAdapter<Artist, GenreArtistListViewHolder>(
+    GenreArtistDiffCallback()
 ) {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistListViewHolder {
-        return ArtistListViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreArtistListViewHolder {
+        return GenreArtistListViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: ArtistListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GenreArtistListViewHolder, position: Int) {
         val artist = getItem(position)
         holder.bind(artist, clickListener)
     }
 }
 
-class ArtistListViewHolder constructor(private val binding: ArtistListItemBinding) :
+class GenreArtistListViewHolder constructor(private val binding: GenreArtistListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
         item: Artist,
-        clickListener: ArtistClickListener
+        clickListener: GenreArtistClickListener
     ) {
         binding.artist = item
         binding.clickListener = clickListener
     }
 
     companion object {
-        fun from(parent: ViewGroup): ArtistListViewHolder {
+        fun from(parent: ViewGroup): GenreArtistListViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
-            val binding = ArtistListItemBinding.inflate(layoutInflater, parent, false)
-            return ArtistListViewHolder(binding)
+            val binding = GenreArtistListItemBinding.inflate(layoutInflater, parent, false)
+            return GenreArtistListViewHolder(binding)
         }
     }
 }
 
-class ArtistDiffCallback : DiffUtil.ItemCallback<Artist>() {
+class GenreArtistDiffCallback : DiffUtil.ItemCallback<Artist>() {
     override fun areItemsTheSame(oldItem: Artist, newItem: Artist): Boolean {
         return oldItem.name == newItem.name
     }
@@ -55,7 +55,7 @@ class ArtistDiffCallback : DiffUtil.ItemCallback<Artist>() {
     }
 }
 
-class ArtistClickListener(
+class GenreArtistClickListener(
     val clickListener: (artist: Artist?) -> Unit,
 ) {
     fun onClick(artist: Artist) = clickListener(artist)

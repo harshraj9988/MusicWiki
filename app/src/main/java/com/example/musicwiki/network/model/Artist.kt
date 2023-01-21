@@ -28,5 +28,6 @@ data class Artist(
 
     @SerializedName("bio")
     var bio: Description? = null,
+
 )
 

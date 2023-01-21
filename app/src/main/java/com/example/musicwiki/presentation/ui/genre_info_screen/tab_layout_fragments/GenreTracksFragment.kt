@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicwiki.R
-import com.example.musicwiki.databinding.FragmentGenreTracksBinding
+import com.example.musicwiki.databinding.FragmentTabLayoutRecyclerViewBinding
 import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,18 +19,18 @@ class GenreTracksFragment(
 
 ) : Fragment() {
 
-    private lateinit var binding: FragmentGenreTracksBinding
+    private lateinit var binding: FragmentTabLayoutRecyclerViewBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_tracks, container, false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_tab_layout_recycler_view, container, false)
 
-        val adapter = TrackListAdapter (TrackClickListener{})
-        binding.tracksRecyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        binding.tracksRecyclerView.setHasFixedSize(false)
-        binding.tracksRecyclerView.adapter = adapter
+        val adapter = GenreTrackListAdapter (GenreTrackClickListener{})
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        binding.recyclerView.setHasFixedSize(false)
+        binding.recyclerView.adapter = adapter
 
         viewModel.topTracks.observe(viewLifecycleOwner) {list ->
             list?.let {
