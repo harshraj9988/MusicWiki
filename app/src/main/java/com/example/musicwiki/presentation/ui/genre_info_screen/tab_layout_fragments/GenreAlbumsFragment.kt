@@ -1,47 +1,44 @@
 package com.example.musicwiki.presentation.ui.genre_info_screen.tab_layout_fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicwiki.R
-import com.example.musicwiki.databinding.FragmentArtistsBinding
+import com.example.musicwiki.databinding.FragmentGenreAlbumsBinding
 import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoFragmentDirections
 import com.example.musicwiki.presentation.ui.genre_info_screen.GenreInfoViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class ArtistsFragment(
+//@AndroidEntryPoint
+class GenreAlbumsFragment(
     private val viewModel: GenreInfoViewModel
 ) : Fragment() {
 
-    private lateinit var binding: FragmentArtistsBinding
+    private lateinit var binding: FragmentGenreAlbumsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_artists, container, false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_genre_albums, container, false)
 
-        val adapter = ArtistListAdapter (ArtistClickListener {
+        val adapter = AlbumListAdapter (AlbumClickListener {
             it?.let {
                 Navigation.findNavController(requireView()).navigate(
-                    GenreInfoFragmentDirections.actionGenreInfoFragmentToArtistInfoFragment(it.name)
+                    GenreInfoFragmentDirections.actionGenreInfoFragmentToAlbumInfoFragment(it.name, it.artist?.name)
                 )
             }
         })
-        binding.artistsRecyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        binding.artistsRecyclerView.setHasFixedSize(false)
-        binding.artistsRecyclerView.adapter = adapter
+        binding.albumsRecyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        binding.albumsRecyclerView.setHasFixedSize(false)
+        binding.albumsRecyclerView.adapter = adapter
 
-        viewModel.topArtists.observe(viewLifecycleOwner) {list ->
+        viewModel.topAlbums.observe(viewLifecycleOwner) {list ->
             list?.let {
                 if(adapter.itemCount == 0){
                     adapter.submitList(it)
@@ -55,5 +52,4 @@ class ArtistsFragment(
 
         return binding.root
     }
-
 }

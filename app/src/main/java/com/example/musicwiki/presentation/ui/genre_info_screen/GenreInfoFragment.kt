@@ -1,6 +1,5 @@
 package com.example.musicwiki.presentation.ui.genre_info_screen
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.example.musicwiki.R
 import com.example.musicwiki.databinding.FragmentGenreInfoBinding
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,11 +34,11 @@ class GenreInfoFragment : Fragment() {
             Toast.makeText(context, "Error! Please try again", Toast.LENGTH_SHORT).show()
         }
 
-        val pagerAdapter = PagerAdapter( this , viewModel)
-        binding.viewPager.adapter = pagerAdapter
+        val genrePagerAdapter = GenrePagerAdapter( this , viewModel)
+        binding.viewPager.adapter = genrePagerAdapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text =  pagerAdapter.getPageTitle(position)
+            tab.text =  genrePagerAdapter.getPageTitle(position)
         }.attach()
 
         viewModel.genreInfo.observe(viewLifecycleOwner) {

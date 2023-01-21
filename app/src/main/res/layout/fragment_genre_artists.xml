@@ -9,13 +9,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.genre_info_screen.tab_layout_fragments.TracksFragment">
+        tools:context=".presentation.ui.genre_info_screen.tab_layout_fragments.GenreArtistsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tracks_recycler_view"
+            android:id="@+id/artists_recycler_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"/>
-
     </RelativeLayout>
 </layout>

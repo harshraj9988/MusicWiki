@@ -9,12 +9,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.genre_info_screen.tab_layout_fragments.ArtistsFragment">
+        tools:context=".presentation.ui.genre_info_screen.tab_layout_fragments.GenreAlbumsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/artists_recycler_view"
+            android:id="@+id/albums_recycler_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            />
+
     </RelativeLayout>
 </layout>
