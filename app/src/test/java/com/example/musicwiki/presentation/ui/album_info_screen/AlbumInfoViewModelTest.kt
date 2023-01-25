@@ -49,8 +49,8 @@ class AlbumInfoViewModelTest {
         testDispatcher.scheduler.advanceUntilIdle()
 
         val result = sut.albumInfo.getOrAwaitValue()
-        assertEquals(true, result.name == "Believe")
-        assertEquals(true, result.artist == "Cher")
+        assertEquals(true, result?.name == "Believe")
+        assertEquals(true, result?.artist == "Cher")
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)

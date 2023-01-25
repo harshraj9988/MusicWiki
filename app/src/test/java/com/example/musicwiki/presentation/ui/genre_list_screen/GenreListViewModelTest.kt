@@ -46,7 +46,7 @@ class GenreListViewModelTest {
         testDispatcher.scheduler.advanceUntilIdle()
         val result = sut.genreList.getOrAwaitValue()
 
-        Assert.assertEquals(0, result.size)
+        Assert.assertEquals(0, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -73,7 +73,7 @@ class GenreListViewModelTest {
 
         val result = sut.genreList.getOrAwaitValue()
 
-        Assert.assertEquals(10, result.size)
+        Assert.assertEquals(10, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -87,7 +87,7 @@ class GenreListViewModelTest {
 
         val result = sut.genreList.getOrAwaitValue()
 
-        Assert.assertEquals(1, result.size)
+        Assert.assertEquals(1, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)

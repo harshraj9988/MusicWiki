@@ -50,7 +50,7 @@ class LastFMRepositoryImplTest {
 
         testDispatcher.scheduler.advanceUntilIdle()
 
-        assertEquals(0, result.size)
+        assertEquals(0, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -64,7 +64,7 @@ class LastFMRepositoryImplTest {
 
         testDispatcher.scheduler.advanceUntilIdle()
 
-        assertEquals("Rock", result.name)
+        assertEquals("Rock", result?.name)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -80,7 +80,7 @@ class LastFMRepositoryImplTest {
         val result = sut.getArtistList("Indie")
         testDispatcher.scheduler.advanceUntilIdle()
 
-        assertEquals(3, result.size)
+        assertEquals(3, result?.size)
     }
 
 
@@ -99,7 +99,7 @@ class LastFMRepositoryImplTest {
         val result = sut.getAlbumList("Rock")
         testDispatcher.scheduler.advanceUntilIdle()
 
-        assertEquals(2, result.size)
+        assertEquals(2, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -117,7 +117,7 @@ class LastFMRepositoryImplTest {
         val result =
             sut.getTrackList("Rock")
         testDispatcher.scheduler.advanceUntilIdle()
-        assertEquals(3, result.size)
+        assertEquals(3, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -130,7 +130,7 @@ class LastFMRepositoryImplTest {
         val result =
             sut.getArtistInfo("Jake")
         testDispatcher.scheduler.advanceUntilIdle()
-        assertEquals(true, result.name == "Jake")
+        assertEquals(true, result?.name == "Jake")
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -146,7 +146,7 @@ class LastFMRepositoryImplTest {
         val result =
             sut.getArtistTopGenres("Roy")
         testDispatcher.scheduler.advanceUntilIdle()
-        assertEquals(2, result.size)
+        assertEquals(2, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -160,7 +160,7 @@ class LastFMRepositoryImplTest {
         val result =
         sut.getArtistTopTracks("Kate")
         testDispatcher.scheduler.advanceUntilIdle()
-        assertEquals(2, result.size)
+        assertEquals(2, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -176,7 +176,7 @@ class LastFMRepositoryImplTest {
         val result =
             sut.getArtistTopAlbums("Cher")
         testDispatcher.scheduler.advanceUntilIdle()
-        assertEquals(2, result.size)
+        assertEquals(2, result?.size)
     }
 
 
@@ -193,8 +193,8 @@ class LastFMRepositoryImplTest {
         val result = sut.getAlbumInfo("Divide", "Ed")
         testDispatcher.scheduler.advanceUntilIdle()
 
-        assertEquals(true, result.name == "Divide")
-        assertEquals(true, result.artist == "Ed")
+        assertEquals(true, result?.name == "Divide")
+        assertEquals(true, result?.artist == "Ed")
     }
 
 

@@ -51,7 +51,7 @@ class ArtistInfoViewModelTest{
         testDispatcher.scheduler.advanceUntilIdle()
 
         val result = sut.artist.getOrAwaitValue()
-        assertEquals(true, result.name == "Cher")
+        assertEquals(true, result?.name == "Cher")
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -71,7 +71,7 @@ class ArtistInfoViewModelTest{
         testDispatcher.scheduler.advanceUntilIdle()
 
         val result = sut.topTracks.getOrAwaitValue()
-        assertEquals(5, result.size)
+        assertEquals(5, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -89,7 +89,7 @@ class ArtistInfoViewModelTest{
         testDispatcher.scheduler.advanceUntilIdle()
 
         val result = sut.topAlbums.getOrAwaitValue()
-        assertEquals(3, result.size)
+        assertEquals(3, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -106,7 +106,7 @@ class ArtistInfoViewModelTest{
         testDispatcher.scheduler.advanceUntilIdle()
 
         val result = sut.topGenres.getOrAwaitValue()
-        assertEquals(2, result.size)
+        assertEquals(2, result?.size)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
